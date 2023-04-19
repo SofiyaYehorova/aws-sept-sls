@@ -1,0 +1,33 @@
+service: aws-sept-sls
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  getUsers:
+    handler: index.getUsers
+    events:
+      - httpApi:
+          path: /users
+          method: get
+  createUsers:
+    handler: index.createUsers
+    events:
+      - httpApi:
+          path: /users
+          method: post
+
+  getCars:
+    handler: index.getCars
+    events:
+      - httpApi:
+          path: /cars
+          method: get
+  createCars:
+    handler: index.createCars
+    events:
+      - httpApi:
+          path: /cars
+          method: post
