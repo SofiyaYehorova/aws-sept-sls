@@ -1,44 +1,57 @@
-service: aws-sept-sls
-frameworkVersion: '3'
+  service: aws-sept-sls
+  frameworkVersion: '3'
 
-plugins:
-  - serverless-dotenv-plugin
-  - serverless-offline
+  plugins:
+    - serverless-dotenv-plugin
+    - serverless-offline
 
-provider:
-  name: aws
-  runtime: nodejs18.x
+  provider:
+    name: aws
+    runtime: nodejs18.x
 
-functions:
-  getTodos:
-    handler: src/handlers/get-todos.handler
-    events:
-      - httpApi:
-          path: /todos
-          method: get
-  createTodo:
-    handler: src/handlers/create-todo.handler
-    events:
-      - httpApi:
-          path: /todos
-          method: post
+  functions:
+    getTodos:
+      handler: src/handlers/get-todos.handler
+      events:
+        - httpApi:
+            path: /todos
+            method: get
+    createTodo:
+      handler: src/handlers/create-todo.handler
+      events:
+        - httpApi:
+            path: /todos
+            method: post
 
-  getTodo:
-    handler: src/handlers/get-todo.handler
-    events:
-      - httpApi:
-          path: /todos/{todoId}
-          method: get
+    getTodo:
+      handler: src/handlers/get-todo.handler
+      events:
+        - httpApi:
+            path: /todos/{todoId}
+            method: get
 
-#  getCars:
-#    handler: index.getCars
-#    events:
-#      - httpApi:
-#          path: /cars
-#          method: get
-#  createCars:
-#    handler: index.createCars
-#    events:
-#      - httpApi:
-#          path: /cars
-#          method: post
+    updateTodo:
+      handler: src/handlers/update-todo.handler
+      events:
+        - httpApi:
+            path: /todos/{todoId}
+            method: patch
+
+    deleteTodo:
+      handler: src/handlers/delete-todo.handler
+      events:
+        - httpApi:
+            path: /todos/{todoId}
+            method: delete
+  #  getCars:
+  #    handler: index.getCars
+  #    events:
+  #      - httpApi:
+  #          path: /cars
+  #          method: get
+  #  createCars:
+  #    handler: index.createCars
+  #    events:
+  #      - httpApi:
+  #          path: /cars
+  #          method: post

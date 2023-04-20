@@ -4,6 +4,7 @@
   "description": "sls serverless sept-22",
   "main": "src/handlers/get-todos.js",
   "scripts": {
+    "start:local": "sls offline start",
     "start:dev": "NODE_ENV=dev sls offline start",
     "start:prod": "NODE_ENV=prod sls offline start",
     "deploy:dev": "sls deploy --stage dev",
